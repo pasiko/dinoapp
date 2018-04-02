@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 const NewWarranty = props => {
-    const { handleSubmit, pristine, reset, submitting } = props
+    const { pristine, reset, submitting } = props;
+
+    function handleSubmit(values) {
+        // todo...
+    }
 
     return (
         <form onSubmit={handleSubmit}>
