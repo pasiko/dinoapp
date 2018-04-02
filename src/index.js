@@ -4,9 +4,13 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers/rootReducer';
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-<Provider store="{store}">
+<Provider store={createStoreWithMiddleware(reducers)}>
 <App />
 </Provider>
 , document.getElementById('root'));
