@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createWarranty } from '../actions';
 
 class NewWarranty extends Component {
     onSubmit(values) {
-        console.log(values);
+        this.props.createWarranty(values);
     }    
     
     render() {
@@ -59,4 +61,6 @@ class NewWarranty extends Component {
 
 export default reduxForm( {
     form: 'new warranty'
-})(NewWarranty)
+})(
+    connect(null, { createWarranty }) (NewWarranty)
+);
