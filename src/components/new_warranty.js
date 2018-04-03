@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 const NewWarranty = props => {
-    const { pristine, reset, submitting } = props;
+    const { pristine, submitting } = props;
 
     function handleSubmit(values) {
         // todo...
