@@ -8,9 +8,7 @@ script:
   - npm test
   - npm run build
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  local_dir: build
-  on:
-    branch: master
+  provider: heroku
+  api_key:
+    secure: "4706b88c-d9f2-44ce-a56f-f0b8bd1e4130"
+    
