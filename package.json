@@ -1,5 +1,5 @@
 {
-  "name": "dino-app",
+  "name": "dino-warranty-app",
   "version": "0.1.0",
   "private": true,
   "main": "index.js",
@@ -9,6 +9,7 @@
     "server_dev": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server_dev\"",
     "prd": "concurrently \"npm run client\" \"npm run server\"",
+    "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
