@@ -8,6 +8,7 @@ node_modules
 client/coverage
 
 # production
+build
 client/build
 
 # misc

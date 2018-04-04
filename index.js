@@ -5,11 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-
-app.get('/', (req, res) => {
-  console.log('hello')
-  res.send('<h1>Hello DinoWarranty!</h1>')
-})
+app.use(express.static('build'))
 
 app.post('/warranties', (req, res) => {
   const body = req.body;
