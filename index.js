@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-app.use(express.static('build/'))
+app.use(express.static('build'))
 
 app.post('/warranties', (req, res) => {
   const body = req.body;
