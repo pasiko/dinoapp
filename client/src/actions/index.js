@@ -3,7 +3,7 @@ import axios from 'axios';
 var ROOT_URL = '/warranties'
 
 //const ROOT_URL = "http://dinowarranty.herokuapp.com/api";
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV === 'development') {
     ROOT_URL = "http://localhost:3001/warranties";
 }
 
