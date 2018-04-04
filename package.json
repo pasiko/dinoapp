@@ -13,6 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@google-cloud/vision": "^0.18.0",
     "ajv": "^6.4.0",
     "axios": "^0.18.0",
     "copyfiles": "^2.0.0",
