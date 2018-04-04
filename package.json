@@ -8,7 +8,7 @@
     "server": "node index.js",
     "server_dev": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"cross-env NODE_ENV=development npm run client\" \"npm run server_dev\"",
-    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "npm run server",    
     "build": "rimraf ./build && cd client && npm run build && cd .. && copyfiles -u 1 ./client/build/** ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
