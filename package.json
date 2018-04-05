@@ -10,8 +10,7 @@
     "dev": "concurrently --kill-others-on-fail \"cross-env NODE_ENV=development npm run client\" \"npm run server_dev\"",
     "start": "npm run server",
     "build": "cd client && npm run build",
-    "install_": "rimraf ./build && copyfiles -u 1 ./client/build/** ./",
-    "deploy": "npm run build && npm run install",
+    "deploy": "rimraf ./build && copyfiles -u 1 ./client/build/** ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
