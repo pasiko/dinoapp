@@ -9,7 +9,9 @@
     "server_dev": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"cross-env NODE_ENV=development npm run client\" \"npm run server_dev\"",
     "start": "npm run server",
-    "build": "rimraf ./build && cd client && npm run build && cd .. && copyfiles -u 1 ./client/build/** ./",
+    "build": "cd client && npm run build",
+    "install": "rimraf ./build && copyfiles -u 1 ./client/build/** ./",
+    "deploy": "npm run build && npm run install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
