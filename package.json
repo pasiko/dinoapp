@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client && npm start",
-    "server": "node index.js",
+    "server": "copyfiles -u 1 ./client/build/** ./ && node index.js",
     "server_dev": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"cross-env NODE_ENV=development npm run client\" \"npm run server_dev\"",
     "start": "npm run server",
