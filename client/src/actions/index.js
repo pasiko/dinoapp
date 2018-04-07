@@ -12,7 +12,10 @@ const API_KEY = "?key=0xbeef";
 export const CREATE_WARRANTY = "create_warranty";
 
 export function createWarranty(values) {
-    const request = axios.post(`${ROOT_URL}${API_KEY}`, values);
+    const request = axios.post(`${ROOT_URL}${API_KEY}`, values)
+        .then(function (response) {
+            console.log(response);
+        });
 
     return {
         type: CREATE_WARRANTY,

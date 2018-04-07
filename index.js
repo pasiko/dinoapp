@@ -8,6 +8,31 @@ app.use(bodyParser.json())
 app.use(express.static('build'))
 
 app.post('/warranties', (req, res) => {
+
+  // DB Test
+  const Sequelize = require('sequelize');
+  const sequelize = new Sequelize('dinowarranty', 'dinowarranty', 'dinowarranty', {
+    host: 'localhost',
+    dialect: 'postgres',
+    operatorsAliases: false,
+  
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
+  });
+
+  sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
   const body = req.body;
   console.log(body)
 
@@ -19,12 +44,11 @@ app.post('/warranties', (req, res) => {
     .then(results => {
       const fullTextAnnotation = results[0].fullTextAnnotation;
       console.log(fullTextAnnotation.text);
+      res.json(fullTextAnnotation);
     })
     .catch(err => {
       console.error('ERROR:', err);
   });
-
-  res.json()
 })
 
 const PORT = process.env.PORT || 3001
