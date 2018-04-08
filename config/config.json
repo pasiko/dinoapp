@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "dinowarranty",
+    "password": "dinowarranty",
+    "database": "dinowarranty",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "dinowarranty",
+    "password": "dinowarranty",
+    "database": "dinowarranty",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "dinowarranty",
+    "password": "dinowarranty",
+    "database": "dinowarranty",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
