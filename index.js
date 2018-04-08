@@ -9,14 +9,14 @@ app.use(express.static('build'))
 
 const db = require('./models');
 
-app.listen(3000, function() {
-  db.sequelize.sync();
-});
+db.sequelize.sync();
+
+console.log("** READY");
+
 
 app.post('/warranties', (req, res) => {
-
   const body = req.body;
-  console.log(body)
+  console.log(body);
 
   const vision = require('@google-cloud/vision');
   const client = new vision.ImageAnnotatorClient();
@@ -24,9 +24,18 @@ app.post('/warranties', (req, res) => {
   client
     .documentTextDetection("receipt.jpg")
     .then(results => {
-      const fullTextAnnotation = results[0].fullTextAnnotation;
-      console.log(fullTextAnnotation.text);
-      res.json(fullTextAnnotation);
+      const fullTextAnnotation = results[0].fullTextAnnotation.text;
+      console.log(fullTextAnnotation);
+
+      var Warranty = db.Warranty;
+
+      Warranty.create({
+        name: body.name,
+        ocr_text: fullTextAnnotation
+      })
+        .then(function (fullTextAnnotation) {
+          res.json(fullTextAnnotation);
+      });
     })
     .catch(err => {
       console.error('ERROR:', err);
