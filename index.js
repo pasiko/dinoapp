@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const multer = require('multer');
 
 const app = express()
 app.use(cors())
@@ -11,18 +12,17 @@ const db = require('./models');
 
 db.sequelize.sync();
 
-console.log("** READY");
+const upload = multer();
 
-
-app.post('/warranties', (req, res) => {
-  const body = req.body;
-  console.log(body);
+app.post('/warranties', upload.single(['receipt']), (req, res, next) => {
+  const receiptName = req.body.name;
+  const receiptFile = req.file.buffer; // JPG image of receipt
 
   const vision = require('@google-cloud/vision');
   const client = new vision.ImageAnnotatorClient();
 
   client
-    .documentTextDetection("receipt.jpg")
+    .documentTextDetection(receiptFile)
     .then(results => {
       const fullTextAnnotation = results[0].fullTextAnnotation.text;
       console.log(fullTextAnnotation);
@@ -30,7 +30,7 @@ app.post('/warranties', (req, res) => {
       var Warranty = db.Warranty;
 
       Warranty.create({
-        name: body.name,
+        name: receiptName,
         ocr_text: fullTextAnnotation
       })
         .then(function (fullTextAnnotation) {

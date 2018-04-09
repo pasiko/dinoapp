@@ -3,6 +3,27 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createWarranty } from '../actions';
 
+// Fix to get file input working with latest React
+// https://github.com/erikras/redux-form/issues/3686
+
+const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
+
+const FileInput = ({ 
+  input: { value: omitValue, onChange, onBlur, ...inputProps }, 
+  meta: omitMeta, 
+  ...props 
+}) => {
+  return (
+    <input
+      onChange={adaptFileEventToValue(onChange)}
+      onBlur={adaptFileEventToValue(onBlur)}
+      type="file"
+      {...props.input}
+      {...props}
+    />
+  );
+};
+
 class NewWarranty extends Component {
     onSubmit(values) {
         this.props.createWarranty(values);
@@ -24,6 +45,17 @@ class NewWarranty extends Component {
                             component="input"
                             type="text"
                             placeholder="Name of your purchase"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label>Receipt of purchase</label>
+                    <div>
+                        <Field
+                            name="receipt"
+                            component={FileInput}
+                            type="file"
+                            placeholder="Receipt of your purchase"
                         />
                     </div>
                 </div>
