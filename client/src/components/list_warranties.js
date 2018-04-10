@@ -13,13 +13,15 @@ class ListWarranties extends Component {
         this.state = {
             list: []
         }
+      }
 
-        axios.get(`${ROOT_URL}list${API_KEY}`).then(function (response) {
-        console.log(response);  
-        //this.setState({list: response.list});
+      componentDidMount() {
+          console.log("jepusjee");
 
-        // TODO: Tallenna tilaan vastaus, mappaa listaan
-        });
+          axios.get(`${ROOT_URL}list${API_KEY}`).then((response) => {
+            console.log(response);  
+            this.setState({list: response.data});
+           });    
       }
     
     render() {
