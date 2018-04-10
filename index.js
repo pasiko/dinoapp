@@ -14,6 +14,14 @@ db.sequelize.sync();
 
 const upload = multer();
 
+const Warranty = db.Warranty;
+
+app.get('/list', (req, res) => {
+  Warranty.all().then(warranties => {
+    res.send(warranties);
+  })
+});
+
 app.post('/warranties', upload.single(['receipt']), (req, res, next) => {
   const receiptName = req.body.name;
   const receiptFile = req.file.buffer; // JPG image of receipt
@@ -27,7 +35,7 @@ app.post('/warranties', upload.single(['receipt']), (req, res, next) => {
       const fullTextAnnotation = results[0].fullTextAnnotation.text;
       console.log(fullTextAnnotation);
 
-      var Warranty = db.Warranty;
+      const Warranty = db.Warranty;
 
       Warranty.create({
         name: receiptName,

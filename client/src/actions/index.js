@@ -3,7 +3,7 @@ import axios from 'axios';
 var ROOT_URL = '/warranties'
 
 if (process.env.NODE_ENV === 'development') {
-    ROOT_URL = "http://localhost:3001/warranties";
+    ROOT_URL = "http://localhost:3001/";
 }
 
 const API_KEY = "?key=0xbeef";
@@ -20,7 +20,7 @@ export function createWarranty(values) {
         }
     };
 
-    const request = axios.post(`${ROOT_URL}${API_KEY}`, formData, config).then(function (response) {
+    const request = axios.post(`${ROOT_URL}warranties${API_KEY}`, formData, config).then(function (response) {
     // const request = axios.post(`${ROOT_URL}${API_KEY}`, formData).then(function (response) {       
             console.log(response);
     });

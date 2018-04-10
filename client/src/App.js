@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NewWarranty from './components/new_warranty';
+import ListWarranties from './components/list_warranties';
+
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      list: []
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -16,6 +25,7 @@ class App extends Component {
         </p>
 
         <NewWarranty />
+        <ListWarranties />
       </div>
     );
   }
