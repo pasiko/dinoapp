@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createWarranty } from '../actions';
+import { withRouter } from "react-router-dom";
 
 // Fix to get file input working with latest React
 // https://github.com/erikras/redux-form/issues/3686
@@ -27,6 +28,7 @@ const FileInput = ({
 class NewWarranty extends Component {
     onSubmit(values) {
         this.props.createWarranty(values);
+        this.props.history.push("/");
     }    
     
     render() {

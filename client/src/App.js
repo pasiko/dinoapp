@@ -22,18 +22,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Dino Warranty!</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload!
-        </p>
-
-        <NewWarranty />
-        <ListWarranties />
 
         <Switch>
-          <Route path="/moi" component={new_warranty} />;
+          <Route path="/new_warranty" component={new_warranty} />          
+          <Route path="/" component={ListWarranties} />
         </Switch>
       </div>
     );
