@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import NewWarranty from './components/new_warranty';
 import ListWarranties from './components/list_warranties';
+import new_warranty from './components/new_warranty';
+import {
+  Route,
+  Switch
+} from 'react-router-dom';
 
 
 class App extends Component {
@@ -26,6 +31,10 @@ class App extends Component {
 
         <NewWarranty />
         <ListWarranties />
+
+        <Switch>
+          <Route path="/moi" component={new_warranty} />;
+        </Switch>
       </div>
     );
   }
