@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers/rootReducer';
 
-
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
